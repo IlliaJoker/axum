@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # 0.5.0
 
+*No changes since rc.1*
+
+## full changelog
+
+- **breaking:** Replace `#[async_trait]` with [return-position `impl Trait` in traits][RPITIT] ([#2308])
+- **breaking:**: `Option<T>` as an extractor now requires `T` to implement the
+  new trait `OptionalFromRequest` (if used as the last extractor) or
+  `OptionalFromRequestParts` (other extractors) ([#2475])
+- **change:** Update minimum rust version to 1.75 ([#2943])
+
 ## rc.1
 
 - **breaking:**: `Option<T>` as an extractor now requires `T` to implement the
