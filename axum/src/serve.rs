@@ -265,10 +265,11 @@ where
         private::ServeFuture(Box::pin(async move {
             let (signal_tx, signal_rx) = watch::channel(());
             let signal_tx = Arc::new(signal_tx);
+            let signal_rx_clone = signal_rx.clone();
             tokio::spawn(async move {
                 signal.await;
                 trace!("received graceful shutdown signal. Telling tasks to shutdown");
-                drop(signal_rx);
+                drop(signal_rx_clone);
             });
 
             let (close_tx, close_rx) = watch::channel(());
